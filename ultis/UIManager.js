@@ -1,5 +1,20 @@
 // UIManager will be a singleton so it will only be instantiate once
 class UIManager {
+  displayBlinkingUIMessage(content, position) {
+    const message = add([
+      text(content, {
+        size: 24,
+        font: "Round",
+      }),
+      area(),
+      anchor("center"),
+      pos(position),
+      opacity(),
+      // First param is the default state
+      state("flash-up", ["flash-up", "flash-down"]),
+    ]);
+  }
+
   displayMainMenu() {
     add([sprite("forest-background"), scale(4)]);
     add([

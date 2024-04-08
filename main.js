@@ -8,6 +8,7 @@ kaboom({
   letterbox: true,
 });
 
+load.fonts();
 load.assets();
 
 const scenes = {
