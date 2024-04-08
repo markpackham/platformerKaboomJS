@@ -52,6 +52,8 @@ class UIManager {
 
     // kamboo.js answer to onClick
     onKeyPress("enter", () => {
+      // play lets you play sounds
+      play("confirm-ui", { speed: 1.5 });
       go("controls");
     });
   }
