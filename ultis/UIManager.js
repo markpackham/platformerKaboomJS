@@ -66,6 +66,24 @@ class UIManager {
       anchor("center"),
       pos(center().x, center().y - 200),
     ]);
+
+    // Game object that can have children
+    const controlPrompts = add([pos(center().x + 30, center().y)]);
+
+    controlPrompts.add([
+      sprite("up"),
+      // Values are relative to the position of the parent
+      pos(0, -80),
+    ]);
+
+    // A single game object can have multiple children
+    controlPrompts.add([sprite("down")]);
+
+    controlPrompts.add([sprite("left"), pos(-80, 0)]);
+
+    controlPrompts.add([sprite("right"), pos(80, 0)]);
+
+    controlPrompts.add([sprite("space"), pos(-200, 0)]);
   }
 }
 
