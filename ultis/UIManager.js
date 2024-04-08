@@ -46,7 +46,7 @@ class UIManager {
     ]);
 
     this.displayBlinkingUIMessage(
-      "Press [ Enter ] to start",
+      "Press [ Enter ] to Start Game",
       vec2(center().x, center().y + 100)
     );
 
@@ -76,14 +76,31 @@ class UIManager {
       pos(0, -80),
     ]);
 
+    // Movement Controls
     // A single game object can have multiple children
     controlPrompts.add([sprite("down")]);
-
     controlPrompts.add([sprite("left"), pos(-80, 0)]);
-
     controlPrompts.add([sprite("right"), pos(80, 0)]);
-
     controlPrompts.add([sprite("space"), pos(-200, 0)]);
+    controlPrompts.add([
+      text("Jump", { font: "Round", size: 32 }),
+      pos(-190, 100),
+    ]);
+    controlPrompts.add([
+      text("Move", { font: "Round", size: 32 }),
+      pos(10, 100),
+    ]);
+
+    this.displayBlinkingUIMessage(
+      "Press [ Enter ] to Start Game",
+      vec2(center().x, center().y + 300)
+    );
+
+    onKeyPress("enter", () => {
+      play("confirm-ui", { speed: 1.5 });
+      // Go to scene / level 1
+      go(1);
+    });
   }
 }
 
