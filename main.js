@@ -7,5 +7,25 @@ kaboom({
 });
 
 const scenes = {
-  menu: () => {},
+  menu: () => {
+    add([text("test")]);
+  },
+  controls: () => {},
+
+  // Levels
+  1: () => {},
+  2: () => {},
+  3: () => {},
+
+  gameover: () => {},
+
+  end: () => {},
 };
+
+for (const key in scenes) {
+  // scene comes from kaboom.js
+  scene(key, scenes[key]);
+}
+
+// go requires a default scene
+go("menu");
