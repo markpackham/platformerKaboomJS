@@ -8,4 +8,7 @@ export const load = {
     loadSprite("forest-background", "./assets/Forest_Background_0.png");
     loadSprite("logo", "./assets/Logo.png");
   },
+  sounds: () => {
+    loadSound("confirm-ui", "./sounds/confirm-ui.wav");
+  },
 };

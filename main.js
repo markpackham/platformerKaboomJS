@@ -9,6 +9,7 @@ kaboom({
 });
 
 load.fonts();
+load.sounds();
 load.assets();
 
 const scenes = {
