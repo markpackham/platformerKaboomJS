@@ -57,6 +57,16 @@ class UIManager {
       go("controls");
     });
   }
+
+  displayControlsMenu() {
+    add([sprite("forest-background"), scale(4)]);
+    add([
+      text("Controls", { font: "Round", size: 50 }),
+      area(),
+      anchor("center"),
+      pos(center().x, center().y - 200),
+    ]);
+  }
 }
 
 export const uiManager = new UIManager("flash-up");

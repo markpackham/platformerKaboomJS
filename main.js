@@ -17,7 +17,9 @@ const scenes = {
     // Load the assets before attempting this or sprites won't be found
     uiManager.displayMainMenu();
   },
-  controls: () => {},
+  controls: () => {
+    uiManager.displayControlsMenu();
+  },
 
   // Levels
   1: () => {},
