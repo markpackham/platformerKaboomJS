@@ -1,4 +1,6 @@
 import kaboom from "./libs/kaboom.mjs";
+import { uiManager } from "./ultis/UIManager.js";
+import { load } from "./ultis/loader.js";
 
 kaboom({
   width: 1280,
@@ -6,9 +8,12 @@ kaboom({
   letterbox: true,
 });
 
+load.assets();
+
 const scenes = {
   menu: () => {
-    add([text("test"), pos(500, 500), color(0, 0, 0)]);
+    // Load the assets before attempting this or sprites won't be found
+    uiManager.displayMainMenu();
   },
   controls: () => {},
 
