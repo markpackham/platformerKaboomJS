@@ -49,6 +49,11 @@ class UIManager {
       "Press [ Enter ] to start",
       vec2(center().x, center().y + 100)
     );
+
+    // kamboo.js answer to onClick
+    onKeyPress("enter", () => {
+      go("controls");
+    });
   }
 }
 
