@@ -29,6 +29,8 @@ const scenes = {
     level1.drawBackground("forest-background");
     level1.drawMapLayout(level1Layout, level1Mappings);
 
+    const player = new Player(1500, 100, 400, 650, 3, 1, false);
+
     // Use wave animation
     level1.drawWaves("water", "wave");
   },

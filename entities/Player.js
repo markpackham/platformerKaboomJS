@@ -17,6 +17,7 @@ export class Player {
     this.speed = speed;
     this.jumpForce = jumpForce;
     this.lives = nbLives;
+    // We need height data for jumps
     this.previousHeight = this.gameObj.pos.y;
   }
 
