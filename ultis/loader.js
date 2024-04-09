@@ -20,6 +20,40 @@ export const load = {
     loadSprite("coin", "./assets/Coin.png");
 
     loadSprite("logo", "./assets/Logo.png");
+
+    // Loading a sprite sheet, more complex than a simple sprite
+    // has 3rd param to tell kaboom which part of image responds to which tiles
+    loadSprite("grass-tileset", "./assets/Grass_Tileset.png", {
+      sliceX: 3,
+      sliceY: 4,
+      anims: {
+        tl: 0,
+        tm: 1,
+        tr: 2,
+        ml: 3,
+        mm: 4,
+        mr: 5,
+        bl: 6,
+        bm: 7,
+        br: 8,
+      },
+    });
+
+    loadSprite("grass-oneway-tileset", "./assets/Grass_Oneway.png", {
+      sliceX: 3,
+      sliceY: 4,
+      anims: {
+        tl: 0,
+        tm: 1,
+        tr: 2,
+        ml: 3,
+        mm: 4,
+        mr: 5,
+        bl: 6,
+        bm: 7,
+        br: 8,
+      },
+    });
   },
 
   // Sounds
