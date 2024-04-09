@@ -19,9 +19,63 @@ export const load = {
     loadSprite("star-icon", "./assets/Stars_Ui.png");
     loadSprite("coin", "./assets/Coin.png");
 
+    // Logo
     loadSprite("logo", "./assets/Logo.png");
 
+    // Player
+    loadSprite("player", "./assets/Player.png", {
+      sliceX: 4,
+      sliceY: 6,
+      anims: {
+        idle: {
+          from: 0,
+          to: 3,
+          loop: true,
+        },
+        run: {
+          from: 4,
+          to: 7,
+          loop: true,
+        },
+        "jump-up": 8,
+        "jump-down": 9,
+      },
+    });
+
     loadSprite("bridge", "./assets/Bridge.png");
+
+    loadSprite("spider-1", "./assets/Spider_1.png", {
+      sliceX: 3,
+      sliceY: 1,
+      anims: {
+        crawl: { from: 0, to: 2, loop: true },
+        idle: 0,
+      },
+    });
+    loadSprite("spider-2", "./assets/Spider_2.png", {
+      sliceX: 3,
+      sliceY: 1,
+      anims: {
+        crawl: { from: 0, to: 2, loop: true },
+        idle: 0,
+      },
+    });
+    loadSprite("forest-background", "./assets/Forest_Background_0.png");
+    loadSprite("grass-tileset", "./assets/Grass_Tileset.png", {
+      sliceX: 3,
+      sliceY: 4,
+      anims: {
+        tl: 0,
+        tm: 1,
+        tr: 2,
+        ml: 3,
+        mm: 4,
+        mr: 5,
+        "ml-2": 6,
+        "mm-2": 7,
+        "mr-2": 8,
+      },
+    });
 
     // Loading a sprite sheet, more complex than a simple sprite
     // has 3rd param to tell kaboom which part of image responds to which tiles
