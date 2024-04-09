@@ -51,9 +51,9 @@ export const load = {
         ml: 3,
         mm: 4,
         mr: 5,
-        "ml-2": 6,
-        "mm-2": 7,
-        "mr-2": 8,
+        bl: 6,
+        bm: 7,
+        br: 8,
       },
     });
     loadSprite("water", "./assets/Water.png", {
@@ -99,9 +99,9 @@ export const load = {
         ml: 3,
         mm: 4,
         mr: 5,
-        "ml-2": 6,
-        "mm-2": 7,
-        "mr-2": 8,
+        bl: 6,
+        bm: 7,
+        br: 8,
       },
     });
     loadSprite("brick-oneway-tileset", "./assets/Brick_Oneway.png", {
@@ -114,9 +114,9 @@ export const load = {
         ml: 3,
         mm: 4,
         mr: 5,
-        "ml-2": 6,
-        "mm-2": 7,
-        "mr-2": 8,
+        bl: 6,
+        bm: 7,
+        br: 8,
       },
     });
 
@@ -169,9 +169,9 @@ export const load = {
         ml: 3,
         mm: 4,
         mr: 5,
-        "ml-2": 6,
-        "mm-2": 7,
-        "mr-2": 8,
+        bl: 6,
+        bm: 7,
+        br: 8,
       },
     });
     loadSprite("rock-oneway-tileset", "./assets/Grass_Rock_Oneway.png", {
@@ -184,9 +184,9 @@ export const load = {
         ml: 3,
         mm: 4,
         mr: 5,
-        "ml-2": 6,
-        "mm-2": 7,
-        "mr-2": 8,
+        bl: 6,
+        bm: 7,
+        br: 8,
       },
     });
     loadSprite("clouds", "./assets/Clouds.png", {
