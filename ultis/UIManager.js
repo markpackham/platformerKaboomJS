@@ -99,7 +99,7 @@ class UIManager {
     onKeyPress("enter", () => {
       play("confirm-ui", { speed: 1.5 });
       // Go to scene / level 1
-      go(1);
+      go("1");
     });
   }
 }
