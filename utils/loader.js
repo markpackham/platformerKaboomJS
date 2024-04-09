@@ -21,6 +21,8 @@ export const load = {
 
     loadSprite("logo", "./assets/Logo.png");
 
+    loadSprite("bridge", "./assets/Bridge.png");
+
     // Loading a sprite sheet, more complex than a simple sprite
     // has 3rd param to tell kaboom which part of image responds to which tiles
     loadSprite("grass-tileset", "./assets/Grass_Tileset.png", {
