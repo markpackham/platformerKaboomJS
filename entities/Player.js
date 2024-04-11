@@ -57,5 +57,12 @@ export class Player {
       this.gameObj.flipX = false;
       this.gameObj.move(this.speed, 0);
     });
+
+    onKeyDown("space", () => {
+      // Only let player jump if they are on the ground
+      if (this.gameObj.isGrounded()) {
+        this.gameObj.jump(this.jumpForce);
+      }
+    });
   }
 }
