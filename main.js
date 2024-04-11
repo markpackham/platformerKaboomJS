@@ -3,6 +3,8 @@ import { uiManager } from "./utils/UIManager.js";
 import { load } from "./utils/loader.js";
 import { Level } from "./utils/Level.js";
 import { level1Layout, level1Mappings } from "./content/level1/level1Layout.js";
+import { Player } from "./entities/Player.js";
+import { Camera } from "./utils/Camera.js";
 
 kaboom({
   width: 1280,
