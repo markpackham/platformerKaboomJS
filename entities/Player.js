@@ -43,9 +43,19 @@ export class Player {
         // Using Kaboom play "method" not to be confused with the Object independent
         // play() function that is intended to play sounds while the Object method play() is for animation
         this.gameObj.play("run");
-        // Make player face left
-        this.gameObj.flipX = true;
       }
+      // Make player face left
+      this.gameObj.flipX = true;
+      // Do not move vertically in any direction so 0 for Y axis
+      this.gameObj.move(-this.speed, 0);
+    });
+
+    onKeyDown("right", () => {
+      if (this.gameObj.curAnim() !== "run") {
+        this.gameObj.play("run");
+      }
+      this.gameObj.flipX = false;
+      this.gameObj.move(this.speed, 0);
     });
   }
 }
