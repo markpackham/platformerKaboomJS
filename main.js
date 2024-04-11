@@ -29,7 +29,12 @@ const scenes = {
     level1.drawBackground("forest-background");
     level1.drawMapLayout(level1Layout, level1Mappings);
 
+    // Player
     const player = new Player(1500, 100, 400, 650, 3, 1, false);
+
+    // Camera
+    const camera = new Camera();
+    camera.attach(player.gameObj, 0, -200);
 
     // Use wave animation
     level1.drawWaves("water", "wave");
