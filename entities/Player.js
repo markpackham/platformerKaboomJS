@@ -1,4 +1,6 @@
 export class Player {
+  heightDelta = 0;
+
   // Used to prevent player movement so they know they died
   isRespawning = false;
 
@@ -41,7 +43,13 @@ export class Player {
 
   enablePassthrough() {
     this.gameObj.onBeforePhysicsResolve((collision) => {
+      // Allow player to go jump through a pass through platform
       if (collision.target.is("passthrough") && this.gameObj.isJumping()) {
+        collision.preventResolution();
+      }
+
+      // Allow player to go down through a pass through platform
+      if (collision.target.is("passthrough") && isKeyDown("down")) {
         collision.preventResolution();
       }
     });
@@ -107,9 +115,16 @@ export class Player {
   // onUpdate is a Kaboom native function
   update() {
     onUpdate(() => {
+      this.heightDelta = this.previousHeight - this.gameObj.pos.y;
+
       if (this.gameObj.pos.y > 1000) {
         play("hit", { speed: 1.5 });
         this.respawnPlayer();
+      }
+
+      // If > than 0 player is ascending
+      if (!this.gameObj.isGrounded() && this.heightDelta > 0) {
+        this.gameObj.play("jump-up");
       }
     });
   }
