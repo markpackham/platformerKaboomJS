@@ -116,6 +116,8 @@ export class Player {
   update() {
     onUpdate(() => {
       this.heightDelta = this.previousHeight - this.gameObj.pos.y;
+      // Keep track of previous height of player frame
+      this.previousHeight = this.gameObj.pos.y;
 
       if (this.gameObj.pos.y > 1000) {
         play("hit", { speed: 1.5 });
@@ -123,8 +125,21 @@ export class Player {
       }
 
       // If > than 0 player is ascending
-      if (!this.gameObj.isGrounded() && this.heightDelta > 0) {
+      if (
+        !this.gameObj.isGrounded() &&
+        this.heightDelta > 0 &&
+        this.gameObj.curAnim() !== "jump-up"
+      ) {
         this.gameObj.play("jump-up");
+      }
+
+      // Fall animation
+      if (
+        !this.gameObj.isGrounded() &&
+        this.heightDelta < 0 &&
+        this.gameObj.curAnim() !== "jump-down"
+      ) {
+        this.gameObj.play("jump-down");
       }
     });
   }
