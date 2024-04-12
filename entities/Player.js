@@ -3,6 +3,8 @@ export class Player {
   isMoving = false;
   // Used to prevent player movement so they know they died
   isRespawning = false;
+  // For coyote time (mercy time for rubbish players to jump when falling)
+  coyoteLapse = 0.1;
 
   constructor(
     posX,
@@ -90,8 +92,22 @@ export class Player {
     onKeyDown("space", () => {
       // Only let player jump if they are on the ground
       if (this.gameObj.isGrounded() && !this.isRespawning) {
+        this.hasJumpedOnce = true;
         this.gameObj.jump(this.jumpForce);
+        play("jump");
+      }
 
+      // Coyote time (for rubbish players)
+      // Named after the Wile E. Coyote cartoon, coyote time is a brief period
+      // of time after running off a platform where the game will still register
+      // the player pressing the jump button
+      if (
+        !this.gameObj.isGrounded() &&
+        time() - this.timeSinceLastGrounded < this.coyoteLapse &&
+        !this.hasJumpedOnce
+      ) {
+        this.hasJumpedOnce = false;
+        this.gameObj.jump(this.jumpForce);
         play("jump");
       }
     });
@@ -119,6 +135,13 @@ export class Player {
   // Runs on every frame
   update() {
     onUpdate(() => {
+      // For coyote time
+      if (this.gameObj.isGrounded()) {
+        this.hasJumpedOnce = false;
+        // Set to current time
+        this.timeSinceLastGrounded = time();
+      }
+
       this.heightDelta = this.previousHeight - this.gameObj.pos.y;
       // Keep track of previous height of player frame
       this.previousHeight = this.gameObj.pos.y;
