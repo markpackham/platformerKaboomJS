@@ -1,6 +1,6 @@
 export class Player {
   heightDelta = 0;
-
+  isMoving = false;
   // Used to prevent player movement so they know they died
   isRespawning = false;
 
@@ -65,6 +65,7 @@ export class Player {
       }
       // Make player face left
       this.gameObj.flipX = true;
+      this.isMoving = true;
 
       // Only move if player is not respawning
       if (!this.isRespawning) {
@@ -78,6 +79,7 @@ export class Player {
         this.gameObj.play("run");
       }
       this.gameObj.flipX = false;
+      this.isMoving = true;
 
       if (!this.isRespawning) {
         this.gameObj.move(this.speed, 0);
@@ -98,6 +100,7 @@ export class Player {
     onKeyRelease(() => {
       if (isKeyReleased("right") || isKeyReleased("left")) {
         this.gameObj.play("idle");
+        this.isMoving = false;
       }
     });
   }
@@ -113,6 +116,7 @@ export class Player {
   }
 
   // onUpdate is a Kaboom native function
+  // Runs on every frame
   update() {
     onUpdate(() => {
       this.heightDelta = this.previousHeight - this.gameObj.pos.y;
@@ -122,6 +126,13 @@ export class Player {
       if (this.gameObj.pos.y > 1000) {
         play("hit", { speed: 1.5 });
         this.respawnPlayer();
+      }
+
+      // Always set player to idle if not moving
+      // make sure you don't waste memory setting them to idle if they
+      // already are idle
+      if (!this.isMoving && this.gameObj.curAnim() !== "idle") {
+        this.gameObj.play("idle");
       }
 
       // If > than 0 player is ascending
