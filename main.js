@@ -48,7 +48,8 @@ const scenes = {
       1,
       false
     );
-
+    // Check if player is still alive
+    player.update();
     // Camera
     attachCamera(player.gameObj, 0, 200);
 

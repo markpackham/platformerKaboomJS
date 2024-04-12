@@ -67,9 +67,27 @@ export class Player {
       }
     });
 
+    // onKeyRelease is a Kaboom native function
     onKeyRelease(() => {
       if (isKeyReleased("right") || isKeyReleased("left")) {
         this.gameObj.play("idle");
+      }
+    });
+  }
+
+  // Respawn player & game if player still alive
+  respawnPlayer() {
+    if (this.lives > 0) {
+      this.gameObj.pos = vec2(this.initialX, this.initialY);
+    }
+  }
+
+  // onUpdate is a Kaboom native function
+  update() {
+    onUpdate(() => {
+      if (this.gameObj.pos.y > 1000) {
+        play("hit", { speed: 1.5 });
+        this.respawnPlayer();
       }
     });
   }
