@@ -58,10 +58,18 @@ export class Player {
       this.gameObj.move(this.speed, 0);
     });
 
+    // Jump
     onKeyDown("space", () => {
       // Only let player jump if they are on the ground
       if (this.gameObj.isGrounded()) {
         this.gameObj.jump(this.jumpForce);
+        play("jump");
+      }
+    });
+
+    onKeyRelease(() => {
+      if (isKeyReleased("right") || isKeyReleased("left")) {
+        this.gameObj.play("idle");
       }
     });
   }
