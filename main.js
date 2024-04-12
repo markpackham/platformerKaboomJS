@@ -48,6 +48,13 @@ const scenes = {
       1,
       false
     );
+
+    // Allow player to pass through platforms coded with specific symbols
+    // "passthrough" code "9aab"
+    // we call this one way collision where it can jump through but not fall through
+    // the platform
+    player.enablePassthrough();
+
     // Check if player is still alive
     player.update();
     // Camera

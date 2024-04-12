@@ -1,4 +1,7 @@
 export class Player {
+  // Used to prevent player movement so they know they died
+  isRespawning = false;
+
   constructor(
     posX,
     posY,
@@ -36,6 +39,14 @@ export class Player {
     ]);
   }
 
+  enablePassthrough() {
+    this.gameObj.onBeforePhysicsResolve((collision) => {
+      if (collision.target.is("passthrough") && this.gameObj.isJumping()) {
+        collision.preventResolution();
+      }
+    });
+  }
+
   setPlayerControls() {
     // Kamboo specific function, not standard JS
     onKeyDown("left", () => {
@@ -46,8 +57,12 @@ export class Player {
       }
       // Make player face left
       this.gameObj.flipX = true;
-      // Do not move vertically in any direction so 0 for Y axis
-      this.gameObj.move(-this.speed, 0);
+
+      // Only move if player is not respawning
+      if (!this.isRespawning) {
+        // Do not move vertically in any direction so 0 for Y axis
+        this.gameObj.move(-this.speed, 0);
+      }
     });
 
     onKeyDown("right", () => {
@@ -55,14 +70,18 @@ export class Player {
         this.gameObj.play("run");
       }
       this.gameObj.flipX = false;
-      this.gameObj.move(this.speed, 0);
+
+      if (!this.isRespawning) {
+        this.gameObj.move(this.speed, 0);
+      }
     });
 
     // Jump
     onKeyDown("space", () => {
       // Only let player jump if they are on the ground
-      if (this.gameObj.isGrounded()) {
+      if (this.gameObj.isGrounded() && !this.isRespawning) {
         this.gameObj.jump(this.jumpForce);
+
         play("jump");
       }
     });
@@ -79,6 +98,9 @@ export class Player {
   respawnPlayer() {
     if (this.lives > 0) {
       this.gameObj.pos = vec2(this.initialX, this.initialY);
+      this.isResponding = true;
+      // Add time delay, so player knows they died
+      setTimeout(() => (this.isRespawning = false), 500);
     }
   }
 
