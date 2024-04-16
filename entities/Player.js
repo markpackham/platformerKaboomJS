@@ -145,6 +145,7 @@ export class Player {
   // Respawn player & game if player still alive
   respawnPlayer() {
     if (this.lives > 0) {
+      this.lives--;
       this.gameObj.pos = vec2(this.initialX, this.initialY);
       this.isResponding = true;
       // Add time delay, so player knows they died
@@ -196,6 +197,12 @@ export class Player {
       ) {
         this.gameObj.play("jump-down");
       }
+    });
+  }
+
+  updateLivesCount(livesCountUI) {
+    onUpdate(() => {
+      livesCountUI.text = this.lives;
     });
   }
 

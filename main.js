@@ -66,9 +66,13 @@ const scenes = {
     // Use wave animation
     level1.drawWaves("water", "wave");
 
-    // Coin Count
+    // Coin count
     uiManager.displayCoinCount();
     player.updateCoinCount(uiManager.coinCountUI);
+
+    // Lives count
+    uiManager.displayLivesCount();
+    player.updateLivesCount(uiManager.livesCountUI);
   },
   2: () => {},
   3: () => {},
