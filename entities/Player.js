@@ -114,8 +114,13 @@ export class Player {
       //   play("jump");
       // }
 
-      if (this.gameObj.isGrounded() && !this.hasJumpedOnce) {
-      }
+      if (!this.gameObj.isGrounded() && this.hasJumpedOnce) return;
+
+      if (time() - this.timeSinceLastGrounded > this.coyoteLapse) return;
+
+      this.gameObj.jump(this.jumpForce);
+      play("jump");
+      this.hasJumpedOnce = true;
     });
 
     // onKeyRelease is a Kaboom native function
