@@ -14,11 +14,11 @@ export class Player {
     jumpForce,
     nbLives,
     currentLevelScene,
-    // isInTerminalScene checks if they completed the game
-    isInTerminalScene
+    // isInFinalLevel checks if they completed the game
+    isInFinalLevel
   ) {
     this.currentLevelScene = currentLevelScene;
-    this.isInTerminalScene = isInTerminalScene;
+    this.isInFinalLevel = isInFinalLevel;
     this.initialX = posX;
     this.initialY = posY;
     this.makePlayer();
@@ -212,6 +212,11 @@ export class Player {
   updateCoinCount(coinCountUI) {
     onUpdate(() => {
       coinCountUI.text = `${this.coins} / ${coinCountUI.fullCoinCount}`;
+      // Check if level completed by collecting all coins
+      if (this.coins === coinCountUI.fullCoinCount) {
+        // Check if player has completed the game or needs to more onto the next level
+        go(this.isInFinalLevel ? "end" : this.currentLevelScene++);
+      }
     });
   }
 }
