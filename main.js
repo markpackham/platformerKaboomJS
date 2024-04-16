@@ -66,6 +66,9 @@ const scenes = {
     // Use wave animation
     level1.drawWaves("water", "wave");
 
+    // Background used to make Coins & Lives score prettier
+    uiManager.addDarkBg();
+
     // Coin count
     uiManager.displayCoinCount();
     player.updateCoinCount(uiManager.coinCountUI);
