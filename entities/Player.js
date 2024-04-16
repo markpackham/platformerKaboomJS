@@ -5,6 +5,7 @@ export class Player {
   isRespawning = false;
   // For coyote time (mercy time for rubbish players to jump when falling)
   coyoteLapse = 0.1;
+  coins = 0;
 
   constructor(
     posX,
@@ -54,6 +55,12 @@ export class Player {
       if (collision.target.is("passthrough") && isKeyDown("down")) {
         collision.preventResolution();
       }
+    });
+  }
+
+  enableCoinPickup() {
+    this.gameObj.onCollide("coin", (coin) => {
+      this.coins++;
     });
   }
 
