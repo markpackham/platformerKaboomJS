@@ -61,6 +61,9 @@ export class Player {
   enableCoinPickup() {
     this.gameObj.onCollide("coin", (coin) => {
       this.coins++;
+      // Kamboom provides destroy() which lets you remove a game object
+      destroy(coin);
+      play("coin");
     });
   }
 

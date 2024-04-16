@@ -55,6 +55,8 @@ const scenes = {
     // the platform
     player.enablePassthrough();
 
+    player.enableCoinPickup();
+
     // Check if player is still alive
     player.update();
     // Camera
