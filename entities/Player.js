@@ -215,7 +215,7 @@ export class Player {
       // Check if level completed by collecting all coins
       if (this.coins === coinCountUI.fullCoinCount) {
         // Check if player has completed the game or needs to more onto the next level
-        go(this.isInFinalLevel ? "end" : this.currentLevelScene++);
+        go(this.isInFinalLevel ? "end" : this.currentLevelScene + 1);
       }
     });
   }
