@@ -84,7 +84,7 @@ const scenes = {
   2: () => {
     setGravity(1400);
 
-    const level1 = new Level();
+    const level2 = new Level();
     level2.drawBackground("castle-background");
     level2.drawMapLayout(level2Layout, level2Mappings);
 
