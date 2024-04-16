@@ -10,14 +10,14 @@ class UIManager {
       }),
       {
         // Kaboom allows us to get() all game objects with a certain tag
-        fullCointCount: get("coin", { recursive: true }).length,
+        fullCoinCount: get("coin", { recursive: true }).length,
       },
       // Do not let coin count move with the camera
       fixed(),
       pos(70, 70),
     ]);
 
-    this.coinCountUI.add([sprite("coin-icon", pos(-60, 0)), scale(3), fixed()]);
+    this.coinCountUI.add([sprite("coin-icon"), pos(-60, 0), scale(3), fixed()]);
   }
 
   displayBlinkingUIMessage(content, position) {

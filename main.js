@@ -59,11 +59,16 @@ const scenes = {
 
     // Check if player is still alive
     player.update();
+
     // Camera
     attachCamera(player.gameObj, 0, 200);
 
     // Use wave animation
     level1.drawWaves("water", "wave");
+
+    // Coin Count
+    uiManager.displayCoinCount();
+    player.updateCoinCount(uiManager.coinCountUI);
   },
   2: () => {},
   3: () => {},

@@ -198,4 +198,10 @@ export class Player {
       }
     });
   }
+
+  updateCoinCount(coinCountUI) {
+    onUpdate(() => {
+      coinCountUI.text = `${this.coins} / ${coinCountUI.fullCoinCount}`;
+    });
+  }
 }
