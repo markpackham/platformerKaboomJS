@@ -1,6 +1,22 @@
 // UIManager will be a singleton so it will only be instantiate once
 class UIManager {
-  displayLivesCount(player) {}
+  displayLivesCount(player) {
+    this.livesCountUI = add([
+      text("", {
+        font: "Round",
+        size: 50,
+      }),
+      fixed(),
+      pos(70, 10),
+    ]);
+
+    this.livesCountUI.add([
+      sprite("star-icon"),
+      pos(-60, -5),
+      scale(3),
+      fixed(),
+    ]);
+  }
 
   displayCoinCount(player) {
     this.coinCountUI = add([
