@@ -90,25 +90,31 @@ export class Player {
 
     // Jump
     onKeyDown("space", () => {
-      // Only let player jump if they are on the ground
-      if (this.gameObj.isGrounded() && !this.isRespawning) {
-        this.hasJumpedOnce = true;
-        this.gameObj.jump(this.jumpForce);
-        play("jump");
-      }
+      // // Only let player jump if they are on the ground
+      // if (
+      //   this.gameObj.isGrounded() &&
+      //   !this.isRespawning &&
+      //   !this.hasJumpedOnce
+      // ) {
+      //   this.hasJumpedOnce = true;
+      //   this.gameObj.jump(this.jumpForce);
+      //   play("jump");
+      // }
+      // // Coyote time (for rubbish players)
+      // // Named after the Wile E. Coyote cartoon, coyote time is a brief period
+      // // of time after running off a platform where the game will still register
+      // // the player pressing the jump button
+      // if (
+      //   !this.gameObj.isGrounded() &&
+      //   time() - this.timeSinceLastGrounded < this.coyoteLapse &&
+      //   !this.hasJumpedOnce
+      // ) {
+      //   this.hasJumpedOnce = true;
+      //   this.gameObj.jump(this.jumpForce);
+      //   play("jump");
+      // }
 
-      // Coyote time (for rubbish players)
-      // Named after the Wile E. Coyote cartoon, coyote time is a brief period
-      // of time after running off a platform where the game will still register
-      // the player pressing the jump button
-      if (
-        !this.gameObj.isGrounded() &&
-        time() - this.timeSinceLastGrounded < this.coyoteLapse &&
-        !this.hasJumpedOnce
-      ) {
-        this.hasJumpedOnce = false;
-        this.gameObj.jump(this.jumpForce);
-        play("jump");
+      if (this.gameObj.isGrounded() && !this.hasJumpedOnce) {
       }
     });
 
