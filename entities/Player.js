@@ -150,6 +150,9 @@ export class Player {
       this.isResponding = true;
       // Add time delay, so player knows they died
       setTimeout(() => (this.isRespawning = false), 500);
+    } else {
+      // Go to Game Over scene
+      go("gameover");
     }
   }
 
