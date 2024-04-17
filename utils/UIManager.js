@@ -134,7 +134,8 @@ class UIManager {
 
     onKeyPress("enter", () => {
       play("confirm-ui", { speed: 1.5 });
-      // Go to scene / level 1
+      // Go to scene / level number
+      // CHANGE HERE TO CHANGE START LEVEL
       go("1");
     });
   }

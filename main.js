@@ -122,7 +122,9 @@ const scenes = {
     setGravity(1400);
 
     const level3 = new Level();
-    level3.drawBackground("castle-background");
+    level3.drawBackground("sky-background-0");
+    level3.drawBackground("sky-background-1");
+    level3.drawBackground("sky-background-2");
     level3.drawMapLayout(level3Layout, level3Mappings);
 
     const player = new Player(
