@@ -49,7 +49,9 @@ const scenes = {
       level1Config.playerSpeed,
       level1Config.jumpForce,
       level1Config.nbLives,
+      // Level scene is 1
       1,
+      // Level is NOT final level
       false
     );
 
@@ -116,7 +118,42 @@ const scenes = {
     uiManager.displayLivesCount();
     player.updateLivesCount(uiManager.livesCountUI);
   },
-  3: () => {},
+  3: () => {
+    setGravity(1400);
+
+    const level3 = new Level();
+    level3.drawBackground("castle-background");
+    level3.drawMapLayout(level3Layout, level3Mappings);
+
+    const player = new Player(
+      level3Config.playerStartPosX,
+      level3Config.playerStartPosY,
+      level3Config.playerSpeed,
+      level3Config.jumpForce,
+      level3Config.nbLives,
+      3,
+      // Final level so we use "true"
+      true
+    );
+
+    player.enablePassthrough();
+
+    player.enableCoinPickup();
+
+    player.update();
+
+    attachCamera(player.gameObj, 0, 200);
+
+    level3.drawWaves("clouds", "wave");
+
+    uiManager.addDarkBg();
+
+    uiManager.displayCoinCount();
+    player.updateCoinCount(uiManager.coinCountUI);
+
+    uiManager.displayLivesCount();
+    player.updateLivesCount(uiManager.livesCountUI);
+  },
 
   gameover: () => {},
 
