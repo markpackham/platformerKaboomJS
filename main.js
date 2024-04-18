@@ -152,8 +152,8 @@ const scenes = {
     );
 
     player.enablePassthrough();
-
     player.enableCoinPickup();
+    player.enableMobVulnerability();
 
     player.update();
 
@@ -183,4 +183,4 @@ for (const key in scenes) {
 // Go requires a default scene to start the entire thing off
 // normally you'd start with "menu" but for testing levels you can set it
 // for example to level "1", "2" or "3"
-go("3");
+go("1");

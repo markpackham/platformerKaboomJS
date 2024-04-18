@@ -156,6 +156,16 @@ export class Player {
     }
   }
 
+  // Harm player when hitting enemy
+  enableMobVulnerability(context) {
+    function hitAndRespawn() {
+      play("hit", { speed: 1.5 });
+      this.respawnPlayer();
+    }
+    // the "this" being hit is the Player class
+    this.gameObj.onCollide("spiders", () => hitAndRespawn(this));
+  }
+
   // onUpdate is a Kaboom native function
   // Runs on every frame
   update() {
