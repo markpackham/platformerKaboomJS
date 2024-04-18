@@ -157,8 +157,8 @@ export class Player {
   }
 
   // Harm player when hitting enemy
-  enableMobVulnerability(context) {
-    function hitAndRespawn() {
+  enableMobVulnerability() {
+    function hitAndRespawn(context) {
       play("hit", { speed: 1.5 });
       context.respawnPlayer();
     }
