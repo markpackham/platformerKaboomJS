@@ -68,7 +68,7 @@ const scenes = {
     player.update();
 
     // Spiders
-    const spiders = new Spiders([vec2(200, 300)], [300], [2], 1);
+    const spiders = new Spiders([vec2(2000, 300)], [300], [2], 1);
     // Set AI for spiders
     spiders.setMovementPattern();
 
