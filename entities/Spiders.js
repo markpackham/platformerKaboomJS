@@ -29,16 +29,54 @@ export class Spiders {
     }
   }
 
-  setMovementPattern(pattern) {
+  // Crawl
+  async crawl(spider, moveBy, duration) {
+    if (spider.curAnim() !== "crawl") spider.play("crawl");
+
+    await tween(
+      spider.pos.x,
+      spider.pos.x + moveBy,
+      duration,
+      (posX) => (spider.pos.x = posX),
+      easings.easeOutSine
+    );
+  }
+
+  // Movement Pattern
+  setMovementPattern() {
     for (const [index, spider] of this.spiders.entries()) {
       // onStateEnter will let us cancel the event
       // when the player level the scene to avoid wasting
       // resources, you shouldn't here a level 1 spider moving about
       // if you are on level 2 or 3
-      const idle = spider.onStateEnter("idle", () => {
+      const idle = spider.onStateEnter("idle", async (previousState) => {
         // Kaboom lets us use a curAnim() to get current animation
         if (spider.curAnim() !== "idle") {
+          spider.play("idle");
+
+          // Make spider wait 1 second before moving on
+          // await is used to block the rest of the function until this is done
+          await new Promise((resolve) => {
+            setTimeout(() => resolve(), 1000);
+          });
+
+          if (previousState === "crawl-left") {
+            spider.enterState("crawl-right");
+            return;
+          }
+
+          spider.jump();
+
+          if (!spider.isOffscreen()) {
+            play("spider-attack", { volume: 0.6 });
+          }
         }
+
+        spider.enterState("crawl-left");
+      });
+
+      const crawlLeft = spider.onStateEnter("crawl-left", () => {
+        spider.flixX = false;
       });
     }
   }
