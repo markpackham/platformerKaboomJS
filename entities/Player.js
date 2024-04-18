@@ -160,7 +160,7 @@ export class Player {
   enableMobVulnerability(context) {
     function hitAndRespawn() {
       play("hit", { speed: 1.5 });
-      this.respawnPlayer();
+      context.respawnPlayer();
     }
     // the "this" being hit is the Player class
     this.gameObj.onCollide("spiders", () => hitAndRespawn(this));
