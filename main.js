@@ -64,12 +64,14 @@ const scenes = {
 
     player.enableCoinPickup();
 
+    player.enableMobVulnerability();
+
     // Check if player is still alive
     player.update();
 
     // Spiders
     const spiders = new Spiders(
-      // Grab spiders fron the config file for level 1
+      // Grab spiders from the config file for level 1
       level1Config.spiderPositions.map((spiderPos) => spiderPos()),
       level1Config.spiderRanges,
       level1Config.spiderDurations,
