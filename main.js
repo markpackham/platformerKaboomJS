@@ -71,6 +71,7 @@ const scenes = {
     const spiders = new Spiders([vec2(2000, 300)], [300], [2], 1);
     // Set AI for spiders
     spiders.setMovementPattern();
+    spiders.enablePassthrough();
 
     // Camera
     attachCamera(player.gameObj, 0, 200);

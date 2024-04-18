@@ -104,4 +104,14 @@ export class Spiders {
       });
     }
   }
+
+  enablePassthrough() {
+    for (const spider of this.spiders) {
+      spider.onBeforePhysicsResolve((collision) => {
+        if (collision.target.is("passthrough") && spider.isJumping()) {
+          collision.preventResolution();
+        }
+      });
+    }
+  }
 }
