@@ -167,5 +167,7 @@ for (const key in scenes) {
   scene(key, scenes[key]);
 }
 
-// go requires a default scene
-go("menu");
+// Go requires a default scene to start the entire thing off
+// normally you'd start with "menu" but for testing levels you can set it
+// for example to level "1", "2" or "3"
+go("1");
