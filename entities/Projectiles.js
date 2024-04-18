@@ -1,11 +1,11 @@
-export class Fish {
+export class Projectiles {
   constructor(positions, amplitudes, type) {
     this.amplitudes = amplitudes;
-    this.fish = [];
+    this.projectiles = [];
     for (const position of positions) {
-      this.fish.push(
+      this.projectiles.push(
         add([
-          sprite(`fish`, { anim: "swim" }),
+          sprite(type, { anim: "swim" }),
           area({ shape: new Rect(vec2(0), 12, 12) }),
           anchor("center"),
           pos(position),
