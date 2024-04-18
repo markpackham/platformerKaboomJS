@@ -66,6 +66,9 @@ const scenes = {
     // Check if player is still alive
     player.update();
 
+    // Spiders
+    const spiders = new Spiders([vec2(200, 300)], [300], [2], 1);
+
     // Camera
     attachCamera(player.gameObj, 0, 200);
 

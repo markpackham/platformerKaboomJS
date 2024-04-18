@@ -1,9 +1,9 @@
 export class Spiders {
   // ranges concerns how far the spiders go back & forth
   // we use different spider types depending on the level
-  constructor(positions, ranges, speeds, type) {
+  constructor(positions, ranges, durations, type) {
     this.ranges = ranges;
-    this.speeds = speeds;
+    this.durations = durations;
     this.spiders = [];
     for (const position of positions) {
       this.spiders.push(
@@ -81,7 +81,7 @@ export class Spiders {
         spider.flipX = false;
 
         // Crawl spider leftwards so -ranges
-        await this.crawl(spider, -this.ranges[index], this.speeds[index]);
+        await this.crawl(spider, -this.ranges[index], this.durations[index]);
         spider.enterState("idle", "crawl-left");
       });
 
@@ -90,7 +90,7 @@ export class Spiders {
         spider.flipX = true;
 
         // Crawl spider leftwards so -ranges
-        await this.crawl(spider, this.ranges[index], this.speeds[index]);
+        await this.crawl(spider, this.ranges[index], this.durations[index]);
         spider.enterState("idle");
       });
     }
