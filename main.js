@@ -68,7 +68,13 @@ const scenes = {
     player.update();
 
     // Spiders
-    const spiders = new Spiders([vec2(2000, 300)], [300], [2], 1);
+    const spiders = new Spiders(
+      // Grab spiders fron the config file for level 1
+      level1Config.spiderPositions.map((spiderPos) => spiderPos()),
+      level1Config.spiderRanges,
+      level1Config.spiderDurations,
+      level1Config.spiderType
+    );
     // Set AI for spiders
     spiders.setMovementPattern();
     spiders.enablePassthrough();
@@ -177,4 +183,4 @@ for (const key in scenes) {
 // Go requires a default scene to start the entire thing off
 // normally you'd start with "menu" but for testing levels you can set it
 // for example to level "1", "2" or "3"
-go("1");
+go("3");
