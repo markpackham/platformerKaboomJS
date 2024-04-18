@@ -1,9 +1,9 @@
 export class Spiders {
-  // amplitudes concerns how far the spiders go back & forth
+  // ranges concerns how far the spiders go back & forth
   // we use different spider types depending on the level
-  constructor(positions, amplitudes, velocities, type) {
-    this.amplitudes = amplitudes;
-    this.velocities = velocities;
+  constructor(positions, ranges, speeds, type) {
+    this.ranges = ranges;
+    this.speeds = speeds;
     this.spiders = [];
     for (const position of positions) {
       this.spiders.push(
@@ -26,6 +26,20 @@ export class Spiders {
           "spiders",
         ])
       );
+    }
+  }
+
+  setMovementPattern(pattern) {
+    for (const [index, spider] of this.spiders.entries()) {
+      // onStateEnter will let us cancel the event
+      // when the player level the scene to avoid wasting
+      // resources, you shouldn't here a level 1 spider moving about
+      // if you are on level 2 or 3
+      const idle = spider.onStateEnter("idle", () => {
+        // Kaboom lets us use a curAnim() to get current animation
+        if (spider.curAnim() !== "idle") {
+        }
+      });
     }
   }
 }
