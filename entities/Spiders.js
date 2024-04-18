@@ -75,8 +75,23 @@ export class Spiders {
         spider.enterState("crawl-left");
       });
 
-      const crawlLeft = spider.onStateEnter("crawl-left", () => {
-        spider.flixX = false;
+      // Crawl left
+      const crawlLeft = spider.onStateEnter("crawl-left", async () => {
+        // Make spider face the left
+        spider.flipX = false;
+
+        // Crawl spider leftwards so -ranges
+        await this.crawl(spider, -this.ranges[index], this.speeds[index]);
+        spider.enterState("idle", "crawl-left");
+      });
+
+      // Crawl right
+      const crawlRight = spider.onStateEnter("crawl-right", async () => {
+        spider.flipX = true;
+
+        // Crawl spider leftwards so -ranges
+        await this.crawl(spider, this.ranges[index], this.speeds[index]);
+        spider.enterState("idle");
       });
     }
   }
