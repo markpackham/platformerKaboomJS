@@ -67,7 +67,7 @@ export class Spiders {
 
           spider.jump();
 
-          if (!spider.isOffscreen()) {
+          if (!spider.isOffScreen()) {
             play("spider-attack", { volume: 0.6 });
           }
         }
