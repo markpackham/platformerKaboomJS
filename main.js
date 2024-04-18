@@ -13,6 +13,7 @@ import attachCamera from "./utils/camera.js";
 import { level1Config } from "./content/level1/config.js";
 import { level2Config } from "./content/level2/config.js";
 import { level3Config } from "./content/level3/config.js";
+import { Spiders } from "./entities/Spiders.js";
 
 kaboom({
   width: 1280,
@@ -68,6 +69,8 @@ const scenes = {
 
     // Spiders
     const spiders = new Spiders([vec2(200, 300)], [300], [2], 1);
+    // Set AI for spiders
+    spiders.setMovementPattern();
 
     // Camera
     attachCamera(player.gameObj, 0, 200);

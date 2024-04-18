@@ -93,6 +93,15 @@ export class Spiders {
         await this.crawl(spider, this.ranges[index], this.durations[index]);
         spider.enterState("idle");
       });
+
+      // CANCEL ALL STATES ON LEAVE SCENE
+      // Use Kaboom function to cancel all states, save resources
+      // so they don't persist after the level
+      onSceneLeave(() => {
+        idle.cancel();
+        crawlLeft.cancel();
+        crawlRight.cancel();
+      });
     }
   }
 }
