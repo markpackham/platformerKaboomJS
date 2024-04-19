@@ -130,6 +130,8 @@ const scenes = {
 
     player.enableCoinPickup();
 
+    player.enableMobVulnerability();
+
     player.update();
 
     const spiders = new Spiders(
@@ -140,6 +142,14 @@ const scenes = {
     );
     spiders.setMovementPattern();
     spiders.enablePassthrough();
+
+    const flame = new Projectiles(
+      level2Config.flamePositions.map((flamePos) => flamePos()),
+      level2Config.flameRanges,
+      "flame"
+    );
+
+    flame.setMovementPattern();
 
     attachCamera(player.gameObj, 0, 200);
 

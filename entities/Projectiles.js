@@ -1,6 +1,7 @@
 export class Projectiles {
   constructor(positions, ranges, type) {
     this.ranges = ranges;
+    this.type = type;
     this.projectiles = [];
 
     const animMap = {
@@ -19,7 +20,7 @@ export class Projectiles {
           rotate(type === "fish" ? 90 : 0),
           state("launch", ["launch", "rotate", "fall"]),
           offscreen(),
-          "fish",
+          type,
         ])
       );
     }
@@ -28,7 +29,15 @@ export class Projectiles {
   setMovementPattern() {
     for (const [index, projectile] of this.projectiles.entries()) {
       const launch = projectile.onStateEnter("launch", async () => {
-        projectile.flipX = false;
+        // Fish & flame flip differently
+        if (this.type === "fish") {
+          projectile.flipX = false;
+        }
+
+        if (this.type === "flame") {
+          projectile.flipY = false;
+        }
+
         await tween(
           projectile.pos.y,
           projectile.pos.y - this.ranges[index],
@@ -40,7 +49,14 @@ export class Projectiles {
       });
 
       const fall = projectile.onStateEnter("fall", async () => {
-        projectile.flipX = true;
+        if (this.type === "fish") {
+          projectile.flipX = true;
+        }
+
+        if (this.type === "flame") {
+          projectile.flipY = true;
+        }
+
         await tween(
           projectile.pos.y,
           projectile.pos.y + this.ranges[index],
