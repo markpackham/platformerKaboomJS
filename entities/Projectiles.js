@@ -16,7 +16,7 @@ export class Projectiles {
           anchor("center"),
           pos(position),
           scale(4),
-          rotate(90),
+          rotate(type === "fish" ? 90 : 0),
           state("launch", ["launch", "rotate", "fall"]),
           offscreen(),
           "fish",
@@ -37,6 +37,23 @@ export class Projectiles {
           easings.easeOutSine
         );
         projectile.enterState("fall");
+      });
+
+      const fall = projectile.onStateEnter("fall", async () => {
+        projectile.flipY = true;
+        await tween(
+          projectile.pos.y,
+          projectile.pos.y + this.amplitudes[index],
+          2,
+          (posY) => (projectile.pos.y = posY),
+          easings.easeOutSine
+        );
+        projectile.enterState("fall");
+      });
+
+      onSceneLeave(() => {
+        launch.cancel();
+        fall.cancel();
       });
     }
   }
