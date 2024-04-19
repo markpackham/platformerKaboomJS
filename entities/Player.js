@@ -162,8 +162,11 @@ export class Player {
       play("hit", { speed: 1.5 });
       context.respawnPlayer();
     }
+    // Things that can harm the player
     // the "this" being hit is the Player class
     this.gameObj.onCollide("spiders", () => hitAndRespawn(this));
+    this.gameObj.onCollide("fish", () => hitAndRespawn(this));
+    this.gameObj.onCollide("flame", () => hitAndRespawn(this));
   }
 
   // onUpdate is a Kaboom native function
