@@ -2,10 +2,16 @@ export class Projectiles {
   constructor(positions, amplitudes, type) {
     this.amplitudes = amplitudes;
     this.projectiles = [];
+
+    const animMap = {
+      fish: "swim",
+      flame: "burn",
+    };
+
     for (const position of positions) {
       this.projectiles.push(
         add([
-          sprite(type, { anim: "swim" }),
+          sprite(type, { anim: animMap[type] }),
           area({ shape: new Rect(vec2(0), 12, 12) }),
           anchor("center"),
           pos(position),
