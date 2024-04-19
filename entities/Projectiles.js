@@ -25,5 +25,19 @@ export class Projectiles {
     }
   }
 
-  setMovementPattern() {}
+  setMovementPattern() {
+    for (const [index, projectile] of this.projectiles.entries()) {
+      const launch = projectile.onStateEnter("launch", async () => {
+        projectile.flipY = false;
+        await tween(
+          projectile.pos.y,
+          projectile.pos.y - this.amplitudes[index],
+          2,
+          (posY) => (projectile.pos.y = posY),
+          easings.easeOutSine
+        );
+        projectile.enterState("fall");
+      });
+    }
+  }
 }
