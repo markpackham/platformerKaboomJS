@@ -28,7 +28,7 @@ export class Projectiles {
   setMovementPattern() {
     for (const [index, projectile] of this.projectiles.entries()) {
       const launch = projectile.onStateEnter("launch", async () => {
-        projectile.flipY = false;
+        projectile.flipX = false;
         await tween(
           projectile.pos.y,
           projectile.pos.y - this.ranges[index],
@@ -40,7 +40,7 @@ export class Projectiles {
       });
 
       const fall = projectile.onStateEnter("fall", async () => {
-        projectile.flipY = true;
+        projectile.flipX = true;
         await tween(
           projectile.pos.y,
           projectile.pos.y + this.ranges[index],
