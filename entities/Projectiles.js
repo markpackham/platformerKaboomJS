@@ -1,6 +1,6 @@
 export class Projectiles {
-  constructor(positions, amplitudes, type) {
-    this.amplitudes = amplitudes;
+  constructor(positions, ranges, type) {
+    this.ranges = ranges;
     this.projectiles = [];
 
     const animMap = {
@@ -31,7 +31,7 @@ export class Projectiles {
         projectile.flipY = false;
         await tween(
           projectile.pos.y,
-          projectile.pos.y - this.amplitudes[index],
+          projectile.pos.y - this.ranges[index],
           2,
           (posY) => (projectile.pos.y = posY),
           easings.easeOutSine
@@ -43,7 +43,7 @@ export class Projectiles {
         projectile.flipY = true;
         await tween(
           projectile.pos.y,
-          projectile.pos.y + this.amplitudes[index],
+          projectile.pos.y + this.ranges[index],
           2,
           (posY) => (projectile.pos.y = posY),
           easings.easeOutSine

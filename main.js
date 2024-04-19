@@ -14,6 +14,7 @@ import { level1Config } from "./content/level1/config.js";
 import { level2Config } from "./content/level2/config.js";
 import { level3Config } from "./content/level3/config.js";
 import { Spiders } from "./entities/Spiders.js";
+import { Projectiles } from "./entities/Projectiles.js";
 
 kaboom({
   width: 1280,
@@ -80,6 +81,12 @@ const scenes = {
     // Set AI for spiders
     spiders.setMovementPattern();
     spiders.enablePassthrough();
+
+    const fish = new Projectiles(
+      level1Config.fishPositions.map((fishPos) => fishPos()),
+      level1Config.fishRanges,
+      "fish"
+    );
 
     // Camera
     attachCamera(player.gameObj, 0, 200);

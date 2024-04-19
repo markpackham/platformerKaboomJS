@@ -14,4 +14,14 @@ export const level1Config = {
   spiderRanges: [300, 150, 150, 300],
   spiderDurations: [2, 1, 1, 2],
   spiderType: 1,
+
+  fishPositions: [
+    () => vec2(2595, 600),
+    () => vec2(2655, 600),
+    () => vec2(4100, 600),
+    () => vec2(4220, 800),
+    () => vec2(5200, 800),
+    () => vec2(5300, 800),
+  ],
+  fishRanges: [300, 500, 400, 500, 900, 800],
 };
