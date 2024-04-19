@@ -88,6 +88,8 @@ const scenes = {
       "fish"
     );
 
+    fish.setMovementPattern();
+
     // Camera
     attachCamera(player.gameObj, 0, 200);
 

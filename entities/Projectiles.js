@@ -48,7 +48,8 @@ export class Projectiles {
           (posY) => (projectile.pos.y = posY),
           easings.easeOutSine
         );
-        projectile.enterState("fall");
+        // Send fish back up so they can fall again
+        projectile.enterState("launch");
       });
 
       onSceneLeave(() => {

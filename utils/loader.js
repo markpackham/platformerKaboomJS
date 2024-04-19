@@ -128,7 +128,7 @@ export const load = {
         },
       },
     });
-    loadSprite("fish-1", "./assets/Fish_1.png", {
+    loadSprite("fish", "./assets/Fish_1.png", {
       sliceX: 2,
       sliceY: 1,
       anims: {
