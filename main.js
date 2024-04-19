@@ -36,6 +36,7 @@ const scenes = {
   },
 
   // Levels
+  // Level 1
   1: () => {
     // Gravity is built into Kaboom
     setGravity(1400);
@@ -107,6 +108,7 @@ const scenes = {
     uiManager.displayLivesCount();
     player.updateLivesCount(uiManager.livesCountUI);
   },
+  // Level 2
   2: () => {
     setGravity(1400);
 
@@ -130,6 +132,15 @@ const scenes = {
 
     player.update();
 
+    const spiders = new Spiders(
+      level2Config.spiderPositions.map((spiderPos) => spiderPos()),
+      level2Config.spiderRanges,
+      level2Config.spiderDurations,
+      level2Config.spiderType
+    );
+    spiders.setMovementPattern();
+    spiders.enablePassthrough();
+
     attachCamera(player.gameObj, 0, 200);
 
     level2.drawWaves("lava", "wave");
@@ -142,6 +153,7 @@ const scenes = {
     uiManager.displayLivesCount();
     player.updateLivesCount(uiManager.livesCountUI);
   },
+  // Level 3
   3: () => {
     setGravity(1400);
 
