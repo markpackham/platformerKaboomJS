@@ -22,4 +22,17 @@ export class Axes {
       );
     }
   }
+
+  async swing(axe, targetAngle, swingDuration) {
+    if (!axe.isOffScreen()) play("swinging-axe");
+
+    await tween(axe.angle, targetAngle);
+  }
+
+  setPatternMovement() {
+    for (const [index, axe] of this.axe.entries) {
+      // Swing Left is the default
+      const swingLeft = axe.onStateEnter("swing-left", async () => {});
+    }
+  }
 }

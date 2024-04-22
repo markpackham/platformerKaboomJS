@@ -15,6 +15,7 @@ import { level2Config } from "./content/level2/config.js";
 import { level3Config } from "./content/level3/config.js";
 import { Spiders } from "./entities/Spiders.js";
 import { Projectiles } from "./entities/Projectiles.js";
+import { Axes } from "./entities/Axes.js";
 
 kaboom({
   width: 1280,
@@ -149,7 +150,11 @@ const scenes = {
       "flame"
     );
 
-    flame.setMovementPattern();
+    const axes = new Axes(
+      level2Config.axesPositions.map((axePos) => axePos()),
+      level2Config.axesSwingTimes
+    );
+    axes.setMovementPattern();
 
     attachCamera(player.gameObj, 0, 200);
 
@@ -216,4 +221,4 @@ for (const key in scenes) {
 // Go requires a default scene to start the entire thing off
 // normally you'd start with "menu" but for testing levels you can set it
 // for example to level "1", "2" or "3"
-go("1");
+go("2");
