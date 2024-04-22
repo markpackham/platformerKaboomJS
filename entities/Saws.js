@@ -20,8 +20,10 @@ export class Saws {
     }
   }
 
-  async rotate(saw, moveBy) {
-    if (!saw.isOffScreen()) play("saw", { volume: 0.6, seek: 10 });
+  async moveAndRotate(saw, moveBy) {
+    // Play the sound in 10 seconds
+    if (!saw.isOffScreen()) play("saw", { volume: 0.3, seek: 10 });
+
     await Promise.all([
       tween(
         saw.pos.x,
@@ -43,28 +45,15 @@ export class Saws {
   setMovementPattern() {
     for (const [index, saw] of this.saws.entries()) {
       const rotateLeft = saw.onStateEnter("rotate-left", async () => {
+        // We -ranges so go left
+        await this.moveAndRotate(saw, -this.ranges[index]);
+
         saw.angle = 0;
         saw.enterState("rotate-right");
       });
 
       const rotateRight = saw.onStateEnter("rotate-right", async () => {
-        if (!saw.isOffScreen()) play("saw", { volume: 0.8, seek: 10 });
-        await Promise.all([
-          tween(
-            saw.pos.x,
-            saw.pos.x + this.ranges[index],
-            1,
-            (posX) => (saw.pos.x = posX),
-            easings.linear
-          ),
-          tween(
-            saw.angle,
-            360,
-            2,
-            (currAngle) => (saw.angle = currAngle),
-            easings.linear
-          ),
-        ]);
+        await this.moveAndRotate(saw, -this.ranges[index]);
 
         saw.angle = 0;
         saw.enterState("rotate-left");
