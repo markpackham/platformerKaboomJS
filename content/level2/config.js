@@ -2,9 +2,11 @@ export const level2Config = {
   gravity: 1400,
   playerSpeed: 400,
   jumpForce: 650,
-  nbLives: 3,
+  nbLives: 10,
   playerStartPosX: 1500,
   playerStartPosY: 100,
+
+  // Flames
   flamePositions: [
     () => vec2(2595, 600),
     () => vec2(2655, 600),
@@ -21,23 +23,29 @@ export const level2Config = {
   ],
   flameRanges: [300, 500, 400, 300, 500, 900, 800, 500, 500, 900, 800, 500],
   flameType: 1,
+
+  // Spiders
   spiderPositions: [
     () => vec2(2200, 100),
-    () => vec2(1900, 0),
-    () => vec2(3200, 200),
+    // () => vec2(1900, 0),
+    // () => vec2(3200, 200),
     () => vec2(3500, 300),
     () => vec2(4500, 300),
   ],
   spiderRanges: [300, 150, 150, 300, 300],
   spiderDurations: [2, 1, 1, 2, 2],
   spiderType: 2,
+
+  // Axes
   axesPositions: [
     () => vec2(2100, -50),
     () => vec2(7000, 10),
     () => vec2(7300, 10),
-    () => vec2(7600, 10),
+    // () => vec2(7600, 10),
   ],
   axesSwingTimes: [1, 2, 3, 2],
-  // sawPositions: [() => vec2(8000, 350), () => vec2(9000, 350)],
-  // sawRanges: [300, 500],
+
+  // Saws
+  sawPositions: [() => vec2(8000, 350), () => vec2(9000, 350)],
+  sawRanges: [300, 500],
 };

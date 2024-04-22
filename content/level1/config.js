@@ -5,6 +5,8 @@ export const level1Config = {
   nbLives: 3,
   playerStartPosX: 1500,
   playerStartPosY: 100,
+
+  // Spiders
   spiderPositions: [
     () => vec2(2000, 300),
     () => vec2(2020, 0),
@@ -15,6 +17,7 @@ export const level1Config = {
   spiderDurations: [2, 1, 1, 2],
   spiderType: 1,
 
+  // Fish
   fishPositions: [
     () => vec2(2595, 600),
     () => vec2(2655, 600),

@@ -53,7 +53,7 @@ export class Saws {
       });
 
       const rotateRight = saw.onStateEnter("rotate-right", async () => {
-        await this.moveAndRotate(saw, -this.ranges[index]);
+        await this.moveAndRotate(saw, this.ranges[index]);
 
         saw.angle = 0;
         saw.enterState("rotate-left");

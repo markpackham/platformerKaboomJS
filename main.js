@@ -16,6 +16,7 @@ import { level3Config } from "./content/level3/config.js";
 import { Spiders } from "./entities/Spiders.js";
 import { Projectiles } from "./entities/Projectiles.js";
 import { Axes } from "./entities/Axes.js";
+import { Saws } from "./entities/Saws.js";
 
 kaboom({
   width: 1280,
@@ -149,12 +150,19 @@ const scenes = {
       level2Config.flameRanges,
       "flame"
     );
+    flame.setMovementPattern();
 
     const axes = new Axes(
       level2Config.axesPositions.map((axePos) => axePos()),
       level2Config.axesSwingTimes
     );
     axes.setMovementPattern();
+
+    const saws = new Saws(
+      level2Config.sawPositions.map((sawPos) => sawPos()),
+      level2Config.sawRanges
+    );
+    saws.setMovementPattern();
 
     attachCamera(player.gameObj, 0, 200);
 

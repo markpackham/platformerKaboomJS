@@ -2,7 +2,7 @@ export const level3Config = {
   gravity: 1400,
   playerSpeed: 400,
   jumpForce: 650,
-  nbLives: 5,
+  nbLives: 10,
   playerStartPosX: 1500,
   playerStartPosY: 100,
 };
