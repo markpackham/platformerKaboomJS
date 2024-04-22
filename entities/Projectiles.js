@@ -18,7 +18,7 @@ export class Projectiles {
           pos(position),
           scale(4),
           rotate(type === "fish" ? 90 : 0),
-          state("launch", ["launch", "rotate", "fall"]),
+          state("launch", ["launch", "fall"]),
           offscreen(),
           type,
         ])
