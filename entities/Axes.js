@@ -26,13 +26,27 @@ export class Axes {
   async swing(axe, targetAngle, swingDuration) {
     if (!axe.isOffScreen()) play("swinging-axe");
 
-    await tween(axe.angle, targetAngle);
+    await tween(
+      axe.angle,
+      targetAngle,
+      swingDuration,
+      (val) => (axe.angle = val),
+      easings.easeInOutSine
+    );
   }
 
   setPatternMovement() {
     for (const [index, axe] of this.axe.entries) {
       // Swing Left is the default
-      const swingLeft = axe.onStateEnter("swing-left", async () => {});
+      const swingLeft = axe.onStateEnter("swing-left", async () => {
+        await this.swing(axe, 90, this.swingDurations[index]);
+        axe.enterState("swing-right");
+      });
+
+      const swingRight = axe.onStateEnter("swing-right", async () => {
+        await this.swing(axe, 90, this.swingDurations[index]);
+        axe.enterState("swing-left");
+      });
     }
   }
 }
