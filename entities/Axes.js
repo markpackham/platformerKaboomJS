@@ -35,8 +35,8 @@ export class Axes {
     );
   }
 
-  setPatternMovement() {
-    for (const [index, axe] of this.axe.entries) {
+  setMovementPattern() {
+    for (const [index, axe] of this.axes.entries()) {
       // Swing Left is the default
       const swingLeft = axe.onStateEnter("swing-left", async () => {
         await this.swing(axe, 90, this.swingDurations[index]);
@@ -44,8 +44,14 @@ export class Axes {
       });
 
       const swingRight = axe.onStateEnter("swing-right", async () => {
-        await this.swing(axe, 90, this.swingDurations[index]);
+        await this.swing(axe, -90, this.swingDurations[index]);
         axe.enterState("swing-left");
+      });
+
+      // Stop wasting resources
+      onSceneLeave(() => {
+        swingLeft.cancel();
+        swingRight.cancel();
       });
     }
   }
