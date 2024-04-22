@@ -20,27 +20,29 @@ export class Saws {
     }
   }
 
+  async rotate(saw, moveBy) {
+    if (!saw.isOffScreen()) play("saw", { volume: 0.6, seek: 10 });
+    await Promise.all([
+      tween(
+        saw.pos.x,
+        saw.pos.x + moveBy,
+        1,
+        (posX) => (saw.pos.x = posX),
+        easings.linear
+      ),
+      tween(
+        saw.angle,
+        360,
+        2,
+        (currAngle) => (saw.angle = currAngle),
+        easings.linear
+      ),
+    ]);
+  }
+
   setMovementPattern() {
     for (const [index, saw] of this.saws.entries()) {
       const rotateLeft = saw.onStateEnter("rotate-left", async () => {
-        if (!saw.isOffScreen()) play("saw", { volume: 0.6, seek: 10 });
-        await Promise.all([
-          tween(
-            saw.pos.x,
-            saw.pos.x - this.ranges[index],
-            1,
-            (posX) => (saw.pos.x = posX),
-            easings.linear
-          ),
-          tween(
-            saw.angle,
-            360,
-            2,
-            (currAngle) => (saw.angle = currAngle),
-            easings.linear
-          ),
-        ]);
-
         saw.angle = 0;
         saw.enterState("rotate-right");
       });
