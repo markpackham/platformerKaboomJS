@@ -18,6 +18,7 @@ import { Saws } from "./entities/Saws.js";
 import { Spiders } from "./entities/Spiders.js";
 import { uiManager } from "./utils/UIManager.js";
 import attachCamera from "./utils/camera.js";
+import { bgSoundManager } from "./utils/BGSoundManager.js";
 
 kaboom({
   width: 1280,
@@ -41,6 +42,16 @@ const scenes = {
   // Levels
   // Level 1
   1: () => {
+    // Background music of water
+    const waterAmbience = play("water-ambience", {
+      volume: 0.2,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      waterAmbience.paused = true;
+    });
+
     // Gravity is built into Kaboom
     setGravity(1400);
 
