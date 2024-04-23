@@ -5,7 +5,7 @@ export const level3Config = {
   nbLives: 15,
   playerStartPosX: 1500,
   playerStartPosY: 100,
-  birdRanges: [200, 100, 250, 300, 300, 150, 150, 400, 100, 50, 350, 300],
+  birdRanges: [100, 100, 150, 100, 100, 150, 150, 100, 100, 50, 150, 100],
   birdPositions: [
     () => vec2(2200, 200),
     () => vec2(1900, 300),
