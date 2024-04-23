@@ -124,6 +124,15 @@ const scenes = {
   },
   // Level 2
   2: () => {
+    const lavaAmbience = play("lava-ambience", {
+      volume: 0.5,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      lavaAmbience.paused = true;
+    });
+
     setGravity(1400);
 
     const level2 = new Level();
@@ -190,6 +199,15 @@ const scenes = {
   },
   // Level 3
   3: () => {
+    const windAmbience = play("strong-wind", {
+      volume: 0.2,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      windAmbience.paused = true;
+    });
+
     setGravity(1400);
 
     const level3 = new Level();
@@ -251,4 +269,4 @@ for (const key in scenes) {
 // Go requires a default scene to start the entire thing off
 // normally you'd start with "menu" but for testing levels you can set it
 // for example to level "1", "2" or "3"
-go("menu");
+go("2");
