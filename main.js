@@ -223,9 +223,13 @@ const scenes = {
     player.updateLivesCount(uiManager.livesCountUI);
   },
 
-  gameover: () => {},
+  gameover: () => {
+    uiManager.displayGameOverScreen();
+  },
 
-  end: () => {},
+  end: () => {
+    uiManager.displayEndGameScreen();
+  },
 };
 
 for (const key in scenes) {
@@ -236,4 +240,4 @@ for (const key in scenes) {
 // Go requires a default scene to start the entire thing off
 // normally you'd start with "menu" but for testing levels you can set it
 // for example to level "1", "2" or "3"
-go("3");
+go("menu");
