@@ -2,21 +2,22 @@
 import kaboom from "./libs/kaboom.mjs";
 
 // Internal imports
+import { Axes } from "./entities/Axes.js";
+import { Birds } from "./entities/Birds.js";
 import { Level } from "./utils/Level.js";
+import { level1Config } from "./content/level1/config.js";
 import { level1Layout, level1Mappings } from "./content/level1/level1Layout.js";
+import { level2Config } from "./content/level2/config.js";
 import { level2Layout, level2Mappings } from "./content/level2/level2Layout.js";
+import { level3Config } from "./content/level3/config.js";
 import { level3Layout, level3Mappings } from "./content/level3/level3Layout.js";
 import { load } from "./utils/loader.js";
 import { Player } from "./entities/Player.js";
+import { Projectiles } from "./entities/Projectiles.js";
+import { Saws } from "./entities/Saws.js";
+import { Spiders } from "./entities/Spiders.js";
 import { uiManager } from "./utils/UIManager.js";
 import attachCamera from "./utils/camera.js";
-import { level1Config } from "./content/level1/config.js";
-import { level2Config } from "./content/level2/config.js";
-import { level3Config } from "./content/level3/config.js";
-import { Spiders } from "./entities/Spiders.js";
-import { Projectiles } from "./entities/Projectiles.js";
-import { Axes } from "./entities/Axes.js";
-import { Saws } from "./entities/Saws.js";
 
 kaboom({
   width: 1280,
@@ -202,6 +203,12 @@ const scenes = {
     player.enableMobVulnerability();
 
     player.update();
+
+    const birds = new Birds(
+      level3Config.birdPositions.map((birdPos) => birdPos()),
+      level3Config.birdRanges
+    );
+    birds.setMovementPattern();
 
     attachCamera(player.gameObj, 0, 200);
 

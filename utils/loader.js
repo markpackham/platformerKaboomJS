@@ -261,7 +261,7 @@ export const load = {
         },
       },
     });
-    loadSprite("bird-1", "./assets/Bird_1.png", {
+    loadSprite("bird", "./assets/Bird_1.png", {
       sliceX: 3,
       sliceY: 1,
       anims: {
