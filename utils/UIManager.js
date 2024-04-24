@@ -13,7 +13,7 @@ class UIManager {
     ]);
 
     this.livesCountUI.add([
-      sprite("star-icon"),
+      sprite("heart-icon"),
       pos(-60, -5),
       scale(3),
       fixed(),
