@@ -67,6 +67,24 @@ export class Player {
     });
   }
 
+  enableEnemyCrashDeath() {
+    this.gameObj.onCollide("spiders", (spider) => {
+      destroy(spider);
+    });
+
+    this.gameObj.onCollide("fish", (fish) => {
+      destroy(fish);
+    });
+
+    this.gameObj.onCollide("flame", (flame) => {
+      destroy(flame);
+    });
+
+    this.gameObj.onCollide("birds", (bird) => {
+      destroy(bird);
+    });
+  }
+
   setPlayerControls() {
     // Kamboo specific function, not standard JS
     onKeyDown("left", () => {

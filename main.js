@@ -18,7 +18,6 @@ import { Saws } from "./entities/Saws.js";
 import { Spiders } from "./entities/Spiders.js";
 import { uiManager } from "./utils/UIManager.js";
 import attachCamera from "./utils/camera.js";
-import { bgSoundManager } from "./utils/BGSoundManager.js";
 
 kaboom({
   width: 1280,
@@ -81,6 +80,8 @@ const scenes = {
     player.enableCoinPickup();
 
     player.enableMobVulnerability();
+
+    player.enableEnemyCrashDeath();
 
     // Check if player is still alive
     player.update();
@@ -150,10 +151,9 @@ const scenes = {
     );
 
     player.enablePassthrough();
-
     player.enableCoinPickup();
-
     player.enableMobVulnerability();
+    player.enableEnemyCrashDeath();
 
     player.update();
 
@@ -230,6 +230,7 @@ const scenes = {
     player.enablePassthrough();
     player.enableCoinPickup();
     player.enableMobVulnerability();
+    player.enableEnemyCrashDeath();
 
     player.update();
 
