@@ -307,5 +307,6 @@ export const load = {
     loadSound("strong-wind", "./sounds/strong-wind.wav");
     loadSound("swinging-axe", "./sounds/swinging-axe.mp3");
     loadSound("water-ambience", "./sounds/water-ambience.mp3");
+    loadSound("gameOver_music", "./sounds/undertaleGameOverTheme.mp3");
   },
 };

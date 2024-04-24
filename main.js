@@ -281,6 +281,15 @@ const scenes = {
   },
 
   gameover: () => {
+    const gameOverMusic = play("gameOver_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      gameOverMusic.paused = true;
+    });
+
     uiManager.displayGameOverScreen();
   },
 
