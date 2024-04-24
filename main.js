@@ -31,6 +31,15 @@ load.assets();
 
 const scenes = {
   menu: () => {
+    const startMusic = play("start_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      startMusic.paused = true;
+    });
+
     // Load the assets before attempting this or sprites won't be found
     uiManager.displayMainMenu();
   },
@@ -47,8 +56,14 @@ const scenes = {
       loop: true,
     });
 
+    const level1Music = play("level1_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
     onSceneLeave(() => {
       waterAmbience.paused = true;
+      level1Music.paused = true;
     });
 
     // Gravity is built into Kaboom
@@ -130,8 +145,14 @@ const scenes = {
       loop: true,
     });
 
+    const level2Music = play("level2_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
     onSceneLeave(() => {
       lavaAmbience.paused = true;
+      level2Music.paused = true;
     });
 
     setGravity(1400);
@@ -204,8 +225,14 @@ const scenes = {
       loop: true,
     });
 
+    const level3Music = play("level3_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
     onSceneLeave(() => {
       windAmbience.paused = true;
+      level3Music.paused = true;
     });
 
     setGravity(1400);
@@ -258,6 +285,15 @@ const scenes = {
   },
 
   end: () => {
+    const endMusic = play("end_music", {
+      volume: 0.2,
+      loop: true,
+    });
+
+    onSceneLeave(() => {
+      endMusic.paused = true;
+    });
+
     uiManager.displayEndGameScreen();
   },
 };

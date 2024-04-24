@@ -290,17 +290,22 @@ export const load = {
 
   // Sounds
   sounds: () => {
-    loadSound("jump", "./sounds/jump.wav");
     loadSound("coin", "./sounds/coin.wav");
-    loadSound("water-ambience", "./sounds/water-ambience.mp3");
-    loadSound("spider-attack", "./sounds/spider-attack.mp3");
-    loadSound("hit", "./sounds/hit.wav");
-    loadSound("lava-ambience", "./sounds/lava.wav");
     loadSound("confirm-ui", "./sounds/confirm-ui.wav");
-    loadSound("swinging-axe", "./sounds/swinging-axe.mp3");
-    loadSound("saw", "./sounds/saw.wav");
-    loadSound("fireball", "./sounds/fireball.wav");
-    loadSound("strong-wind", "./sounds/strong-wind.wav");
     loadSound("dive", "./sounds/dive.wav");
+    loadSound("end_music", "./sounds/he-ManThemeMetalGuitar.mp3");
+    loadSound("fireball", "./sounds/fireball.wav");
+    loadSound("hit", "./sounds/hit.wav");
+    loadSound("jump", "./sounds/jump.wav");
+    loadSound("lava-ambience", "./sounds/lava.wav");
+    loadSound("level1_music", "./sounds/duckTalesMoonStage.mp3");
+    loadSound("level2_music", "./sounds/duckTalesHimalayaStage.mp3");
+    loadSound("level3_music", "./sounds/duckTalesBossBattle.mp3");
+    loadSound("saw", "./sounds/saw.wav");
+    loadSound("spider-attack", "./sounds/spider-attack.mp3");
+    loadSound("start_music", "./sounds/undertaleFallenDown.mp3");
+    loadSound("strong-wind", "./sounds/strong-wind.wav");
+    loadSound("swinging-axe", "./sounds/swinging-axe.mp3");
+    loadSound("water-ambience", "./sounds/water-ambience.mp3");
   },
 };
