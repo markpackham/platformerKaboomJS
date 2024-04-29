@@ -121,7 +121,7 @@ class UIManager {
     controlPrompts.add([sprite("right"), pos(80, 0)]);
     controlPrompts.add([sprite("space"), pos(-200, 0)]);
     controlPrompts.add([
-      text("Jump", { font: "Round", size: 32 }),
+      text("Attack*", { font: "Round", size: 32 }),
       pos(-190, 100),
     ]);
     controlPrompts.add([
@@ -130,7 +130,7 @@ class UIManager {
     ]);
 
     this.displayBlinkingUIMessage(
-      "Press [ Enter ] to Start Game",
+      "(*Attack wiill be added later) - Press [ Enter ] to Start Game",
       vec2(center().x, center().y + 300)
     );
 

@@ -52,7 +52,10 @@ export class Player {
       }
 
       // Allow player to go down through a pass through platform
-      if (collision.target.is("passthrough") && isKeyDown("down")) {
+      if (
+        (collision.target.is("passthrough") && isKeyDown("down")) ||
+        (collision.target.is("passthrough") && isKeyDown("s"))
+      ) {
         collision.preventResolution();
       }
     });
@@ -77,6 +80,7 @@ export class Player {
     });
   }
 
+  // Players can use wasd for controls or up, left, right & down on keyboard
   setPlayerControls() {
     // Kamboo specific function, not standard JS
     onKeyDown("left", () => {
@@ -96,6 +100,18 @@ export class Player {
       }
     });
 
+    onKeyDown("a", () => {
+      if (this.gameObj.curAnim() !== "run") {
+        this.gameObj.play("run");
+      }
+      this.gameObj.flipX = true;
+      this.isMoving = true;
+
+      if (!this.isRespawning) {
+        this.gameObj.move(-this.speed, 0);
+      }
+    });
+
     onKeyDown("right", () => {
       if (this.gameObj.curAnim() !== "run") {
         this.gameObj.play("run");
@@ -108,8 +124,20 @@ export class Player {
       }
     });
 
+    onKeyDown("d", () => {
+      if (this.gameObj.curAnim() !== "run") {
+        this.gameObj.play("run");
+      }
+      this.gameObj.flipX = false;
+      this.isMoving = true;
+
+      if (!this.isRespawning) {
+        this.gameObj.move(this.speed, 0);
+      }
+    });
+
     // Jump
-    onKeyDown("space", () => {
+    onKeyDown("up", () => {
       // // Only let player jump if they are on the ground
       // if (
       //   this.gameObj.isGrounded() &&
@@ -143,9 +171,23 @@ export class Player {
       this.hasJumpedOnce = true;
     });
 
-    // onKeyRelease is a Kaboom native function
+    onKeyDown("w", () => {
+      if (!this.gameObj.isGrounded() && this.hasJumpedOnce) return;
+
+      if (time() - this.timeSinceLastGrounded > this.coyoteLapse) return;
+
+      this.gameObj.jump(this.jumpForce);
+      play("jump");
+      this.hasJumpedOnce = true;
+    });
+
     onKeyRelease(() => {
-      if (isKeyReleased("right") || isKeyReleased("left")) {
+      if (
+        isKeyReleased("right") ||
+        isKeyReleased("left") ||
+        isKeyReleased("a") ||
+        isKeyReleased("d")
+      ) {
         this.gameObj.play("idle");
         this.isMoving = false;
       }
