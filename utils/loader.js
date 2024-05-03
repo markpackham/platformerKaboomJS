@@ -302,6 +302,7 @@ export const load = {
     loadSound("level2_music", "./sounds/duckTalesHimalayaStage.mp3");
     loadSound("level3_music", "./sounds/duckTalesBossBattle.mp3");
     loadSound("saw", "./sounds/saw.wav");
+    loadSound("slash", "./sounds/sword-slash.mp3");
     loadSound("spider-attack", "./sounds/spider-attack.mp3");
     loadSound("start_music", "./sounds/undertaleFallenDown.mp3");
     loadSound("strong-wind", "./sounds/strong-wind.wav");

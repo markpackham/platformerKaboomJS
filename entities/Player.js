@@ -136,6 +136,19 @@ export class Player {
       }
     });
 
+    // Slash attack player does
+    let lastSlashTime = 0;
+    // 1 second cooldown
+    const slashCooldown = 1;
+
+    onKeyDown("space", () => {
+      const currentTime = time();
+      if (currentTime - lastSlashTime >= slashCooldown) {
+        play("slash");
+        lastSlashTime = currentTime;
+      }
+    });
+
     // Jump
     onKeyDown("up", () => {
       // // Only let player jump if they are on the ground
