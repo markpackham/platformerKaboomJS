@@ -146,7 +146,28 @@ export class Player {
       if (currentTime - lastSlashTime >= slashCooldown) {
         play("slash");
         lastSlashTime = currentTime;
-      }
+
+        // Intergrate Later shoot star at enemies
+      //   const shootingStar = k.add([
+      //     k.sprite("assets", {
+      //       anim: "shootingStar",
+      //       flipX: player.direction === "right",
+      //     }),
+      //     k.area({ shape: new k.Rect(k.vec2(5, 4), 6, 6) }),
+      //     k.pos(
+      //       player.direction === "left" ? player.pos.x - 80 : player.pos.x + 80,
+      //       player.pos.y + 5
+      //     ),
+      //     k.scale(scale),
+      //     player.direction === "left"
+      //       ? k.move(k.LEFT, 800)
+      //       : k.move(k.RIGHT, 800),
+      //     "shootingStar",
+      //   ]);
+
+      //   // Star gets destroyed if it hits a platform
+      //   shootingStar.onCollide("platform", () => k.destroy(shootingStar));
+      // }
     });
 
     // Jump
