@@ -1,3 +1,6 @@
+// External imports
+// import kaboom from "../libs/kaboom.mjs";
+
 export class Player {
   heightDelta = 0;
   isMoving = false;
@@ -148,25 +151,25 @@ export class Player {
         lastSlashTime = currentTime;
 
         // Intergrate Later shoot star at enemies
-        //   const shootingStar = k.add([
-        //     k.sprite("assets", {
-        //       anim: "shootingStar",
-        //       flipX: player.direction === "right",
-        //     }),
-        //     k.area({ shape: new k.Rect(k.vec2(5, 4), 6, 6) }),
-        //     k.pos(
-        //       player.direction === "left" ? player.pos.x - 80 : player.pos.x + 80,
-        //       player.pos.y + 5
-        //     ),
-        //     k.scale(scale),
-        //     player.direction === "left"
-        //       ? k.move(k.LEFT, 800)
-        //       : k.move(k.RIGHT, 800),
-        //     "shootingStar",
-        //   ]);
+        // const shootingStar = kaboom.add([
+        //   kaboom.sprite("assets", {
+        //     anim: "shootingStar",
+        //     flipX: this.direction === "right",
+        //   }),
+        //   kaboom.area({ shape: new k.Rect(k.vec2(5, 4), 6, 6) }),
+        //   kaboom.pos(
+        //     this.direction === "left" ? this.pos.x - 80 : this.pos.x + 80,
+        //     this.pos.y + 5
+        //   ),
+        //   kaboom.scale(4),
+        //   this.direction === "left"
+        //     ? k.move(k.LEFT, 800)
+        //     : k.move(k.RIGHT, 800),
+        //   "shootingStar",
+        // ]);
 
-        //   // Star gets destroyed if it hits a platform
-        //   shootingStar.onCollide("platform", () => k.destroy(shootingStar));
+        // // Star gets destroyed if it hits a platform
+        // shootingStar.onCollide("platform", () => k.destroy(shootingStar));
       }
     });
 
